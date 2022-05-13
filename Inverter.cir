@@ -1,0 +1,32 @@
+Inversor CMOS
+*Simulacion de un inversor 
+
+.MODEL MOSN NMOS LEVEL=1
+.MODEL MOSP PMOS LEVEL=1
+*.step param V 1.62 1.98 2m
+
+V1 vdd 0 DC 1.8
+Vvin n1 0 0 pulse(0 1.8 10u 1p 1p 50u 100u)
+
+Mp n3 n1 vdd vdd MOSP W=0.26u L=0.13u  
+Mn n3 n1 0 0 MOSN W=0.26u L=0.13u 
+
+.temp 30
+.control
+
+*Tipo de simulacion
+tran 5u 150u
+*dc V1 1.62 1.98 2m
+*dc Vvin 0 1.8 0.5m
+
+*Configuracion para vizualizar las graficas
+set color0 = white
+set xbrushwidth = 3
+
+*Graficas
+plot n1 n3
+print 
+.endc
+
+.end
+
