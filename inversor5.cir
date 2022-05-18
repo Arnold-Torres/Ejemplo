@@ -1,0 +1,300 @@
+Inversor
+
+.param Lnp = 0.13u
+.param Wn = 0.52u   Wp = 0.78u
+
+.MODEL MOSN NMOS LEVEL=1
+.MODEL MOSP PMOS LEVEL=1
+
+*Descripcion del circuito
+
+V1 vdd 0 DC 1.62
+Vvin n1_in 0 0 pulse(0 1.8 10u 1u 1u 20u 42u)
+Mp n3_out n1_in vdd vdd MOSP W={Wp} L={Lnp}
+Mn n3_out n1_in 0 0 MOSN W={Wn} L={Lnp}
+
+* ANALISIS
+.control
+run
+* ==============	vdd = 1.62	===========
+let act_t=-20
+echo temp tpLH tpHL > tp_20_120_62.txt
+
+while act_t < 121
+  options temp = $&act_t
+  tran 500n 60u
+
+* MEDIDA DE EL TIEMPO DE PROPAGACION   LH   HL
+  meas tran tpLH TRIG v(n1_in) VAL=0.81 FALL=1
++ TARG v(n3_out) VAL=0.81  RISE=1
+
+  meas tran tpHL TRIG v(n1_in) VAL=0.81 RISE=2
++ TARG v(n3_out) VAL=0.81 FALL=2
+
+* GUARDADO DE LOS DATOS
+  echo "$&act_t" "$&tpLH" "$&tpHL" >> tp_20_120_62.txt
+  let f=act_t+2
+  let act_t =f
+end
+
+*Grafica
+set color0 = white
+set xbrushwidth = 3
+
+plot n1_in n3_out
+
+* ==============	vdd = 1.66	===========
+alter v1 1.66
+let act_t=-20
+echo temp tpLH tpHL > tp_20_120_66.txt
+
+while act_t < 121
+  options temp = $&act_t
+  tran 500n 60u
+
+* MEDIDA DE EL TIEMPO DE PROPAGACION   LH   HL
+  meas tran tpLH TRIG v(n1_in) VAL=0.83 FALL=1
++ TARG v(n3_out) VAL=0.83  RISE=1
+
+  meas tran tpHL TRIG v(n1_in) VAL=0.83 RISE=2
++ TARG v(n3_out) VAL=0.83 FALL=2
+
+* GUARDADO DE LOS DATOS
+  echo "$&act_t" "$&tpLH" "$&tpHL" >> tp_20_120_66.txt
+  let f=act_t+2
+  let act_t =f
+end
+
+*Grafica
+set color0 = white
+set xbrushwidth = 3
+
+plot n1_in n3_out
+
+* ==============	vdd = 1.70	===========
+alter v1 1.70
+let act_t=-20
+echo temp tpLH tpHL > tp_20_120_70.txt
+
+while act_t < 121
+  options temp = $&act_t
+  tran 500n 60u
+
+* MEDIDA DE EL TIEMPO DE PROPAGACION   LH   HL
+  meas tran tpLH TRIG v(n1_in) VAL=0.85 FALL=1
++ TARG v(n3_out) VAL=0.85  RISE=1
+
+  meas tran tpHL TRIG v(n1_in) VAL=0.85 RISE=2
++ TARG v(n3_out) VAL=0.85 FALL=2
+
+* GUARDADO DE LOS DATOS
+  echo "$&act_t" "$&tpLH" "$&tpHL" >> tp_20_120_70.txt
+  let f=act_t+2
+  let act_t =f
+end
+
+*Grafica
+set color0 = white
+set xbrushwidth = 3
+
+plot n1_in n3_out
+
+* ==============	vdd = 1.74	===========
+alter v1 1.74
+let act_t=-20
+echo temp tpLH tpHL > tp_20_120_74.txt
+
+while act_t < 121
+  options temp = $&act_t
+  tran 500n 60u
+
+* MEDIDA DE EL TIEMPO DE PROPAGACION   LH   HL
+  meas tran tpLH TRIG v(n1_in) VAL=0.87 FALL=1
++ TARG v(n3_out) VAL=0.87  RISE=1
+
+  meas tran tpHL TRIG v(n1_in) VAL=0.87 RISE=2
++ TARG v(n3_out) VAL=0.87 FALL=2
+
+* GUARDADO DE LOS DATOS
+  echo "$&act_t" "$&tpLH" "$&tpHL" >> tp_20_120_74.txt
+  let f=act_t+2
+  let act_t =f
+end
+
+*Grafica
+set color0 = white
+set xbrushwidth = 3
+
+plot n1_in n3_out
+
+* ==============	vdd = 1.78	===========
+alter v1 1.78
+let act_t=-20
+echo temp tpLH tpHL > tp_20_120_78.txt
+
+while act_t < 121
+  options temp = $&act_t
+  tran 500n 60u
+
+* MEDIDA DE EL TIEMPO DE PROPAGACION   LH   HL
+  meas tran tpLH TRIG v(n1_in) VAL=0.89 FALL=1
++ TARG v(n3_out) VAL=0.89  RISE=1
+
+  meas tran tpHL TRIG v(n1_in) VAL=0.89 RISE=2
++ TARG v(n3_out) VAL=0.89 FALL=2
+
+* GUARDADO DE LOS DATOS
+  echo "$&act_t" "$&tpLH" "$&tpHL" >> tp_20_120_78.txt
+  let f=act_t+2
+  let act_t =f
+end
+
+*Grafica
+set color0 = white
+set xbrushwidth = 3
+
+plot n1_in n3_out
+
+* ==============	vdd = 1.82	===========
+alter v1 1.82
+let act_t=-20
+echo temp tpLH tpHL > tp_20_120_82.txt
+
+while act_t < 121
+  options temp = $&act_t
+  tran 500n 60u
+
+* MEDIDA DE EL TIEMPO DE PROPAGACION   LH   HL
+  meas tran tpLH TRIG v(n1_in) VAL=0.91 FALL=1
++ TARG v(n3_out) VAL=0.91  RISE=1
+
+  meas tran tpHL TRIG v(n1_in) VAL=0.91 RISE=2
++ TARG v(n3_out) VAL=0.91 FALL=2
+
+* GUARDADO DE LOS DATOS
+  echo "$&act_t" "$&tpLH" "$&tpHL" >> tp_20_120_82.txt
+  let f=act_t+2
+  let act_t =f
+end
+
+*Grafica
+set color0 = white
+set xbrushwidth = 3
+
+plot n1_in n3_out
+
+* ==============	vdd = 1.86	===========
+alter v1 1.86
+let act_t=-20
+echo temp tpLH tpHL > tp_20_120_86.txt
+
+while act_t < 121
+  options temp = $&act_t
+  tran 500n 60u
+
+* MEDIDA DE EL TIEMPO DE PROPAGACION   LH   HL
+  meas tran tpLH TRIG v(n1_in) VAL=0.93 FALL=1
++ TARG v(n3_out) VAL=0.93  RISE=1
+
+  meas tran tpHL TRIG v(n1_in) VAL=0.93 RISE=2
++ TARG v(n3_out) VAL=0.93 FALL=2
+
+* GUARDADO DE LOS DATOS
+  echo "$&act_t" "$&tpLH" "$&tpHL" >> tp_20_120_86.txt
+  let f=act_t+2
+  let act_t =f
+end
+
+*Grafica
+set color0 = white
+set xbrushwidth = 3
+
+plot n1_in n3_out
+
+* ==============	vdd = 1.90	===========
+alter v1 1.90
+let act_t=-20
+echo temp tpLH tpHL > tp_20_120_90.txt
+
+while act_t < 121
+  options temp = $&act_t
+  tran 500n 60u
+
+* MEDIDA DE EL TIEMPO DE PROPAGACION   LH   HL
+  meas tran tpLH TRIG v(n1_in) VAL=0.95 FALL=1
++ TARG v(n3_out) VAL=0.95  RISE=1
+
+  meas tran tpHL TRIG v(n1_in) VAL=0.95 RISE=2
++ TARG v(n3_out) VAL=0.95 FALL=2
+
+* GUARDADO DE LOS DATOS
+  echo "$&act_t" "$&tpLH" "$&tpHL" >> tp_20_120_90.txt
+  let f=act_t+2
+  let act_t =f
+end
+
+*Grafica
+set color0 = white
+set xbrushwidth = 3
+
+plot n1_in n3_out
+
+* ==============	vdd = 1.94	===========
+alter v1 1.94
+let act_t=-20
+echo temp tpLH tpHL > tp_20_120_94.txt
+
+while act_t < 121
+  options temp = $&act_t
+  tran 500n 60u
+
+* MEDIDA DE EL TIEMPO DE PROPAGACION   LH   HL
+  meas tran tpLH TRIG v(n1_in) VAL=0.97 FALL=1
++ TARG v(n3_out) VAL=0.97  RISE=1
+
+  meas tran tpHL TRIG v(n1_in) VAL=0.97 RISE=2
++ TARG v(n3_out) VAL=0.97 FALL=2
+
+* GUARDADO DE LOS DATOS
+  echo "$&act_t" "$&tpLH" "$&tpHL" >> tp_20_120_94.txt
+  let f=act_t+2
+  let act_t =f
+end
+
+*Grafica
+set color0 = white
+set xbrushwidth = 3
+
+plot n1_in n3_out
+
+* ==============	vdd = 1.98	===========
+alter v1 1.98
+let act_t=-20
+echo temp tpLH tpHL > tp_20_120_98.txt
+
+while act_t < 121
+  options temp = $&act_t
+  tran 500n 60u
+
+* MEDIDA DE EL TIEMPO DE PROPAGACION   LH   HL
+  meas tran tpLH TRIG v(n1_in) VAL=0.99 FALL=1
++ TARG v(n3_out) VAL=0.99  RISE=1
+
+  meas tran tpHL TRIG v(n1_in) VAL=0.99 RISE=2
++ TARG v(n3_out) VAL=0.99 FALL=2
+
+* GUARDADO DE LOS DATOS
+  echo "$&act_t" "$&tpLH" "$&tpHL" >> tp_20_120_98.txt
+  let f=act_t+2
+  let act_t =f
+end
+
+*Grafica
+set color0 = white
+set xbrushwidth = 3
+
+plot n1_in n3_out
+
+.endc
+.end
+
